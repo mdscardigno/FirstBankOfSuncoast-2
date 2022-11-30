@@ -93,4 +93,35 @@ Filter Out Checking
 ----Filter out the Withdraw and Sum the Total of the Withdraw
 ----Difference = Deposit Amount - Withdraw Amount
 Ask how much they want to withdraw from checking?
-----If (difference < Asking Amount>)
+----If (Difference < Asking Amount>)
+------Add a new instance of Transaction:
+------Account
+------Amount
+------Type
+------TimeStamp
+------Add Transaction
+----Write all the transaction to the file (the four lines of code for the fileWriter)
+
+8. If (Transaction History):
+   --Ask the User if they would like to choose Savings or Checking?.
+   --If(Savings):
+   Filter out the Account by Savings
+   Foreach (var saved in savings)
+   Print out your transaction history for savings
+   --If (Checking):
+   Filter out the Account by Checking
+   Foreach(var saved in checking)
+   Print out all your transactions history for checking.
+
+9. If(Balance):
+   Ask the User if they would like to choose Savings or Checking?.
+   If(Savings):
+   Filter out Savings
+   --Filter out the Deposit and Sum the Total of the Deposit
+   --Filter out the Withdraw and Sum the Total of the Withdraw
+   --Difference = Deposit Amount - Withdraw Amount
+   Print out the Difference .
+10. If(Quit):
+    bool keepGoing = false
+
+11. Say goodbye and come back again.
