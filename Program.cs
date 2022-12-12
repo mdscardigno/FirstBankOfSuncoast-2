@@ -13,33 +13,33 @@ namespace FirstBankOfSuncoast
             {
                 Console.WriteLine("Menu Options:");
                 Console.WriteLine();
-                Console.WriteLine("Deposit");
-                Console.WriteLine("Withdraw");
-                Console.WriteLine("Transfer");
-                Console.WriteLine("Balance");
-                Console.WriteLine("History");
-                Console.WriteLine("Quit");
+                Console.WriteLine("(D)eposit");
+                Console.WriteLine("(W)ithdraw");
+                Console.WriteLine("(T)ransfer");
+                Console.WriteLine("(B)alance");
+                Console.WriteLine("(H)istory");
+                Console.WriteLine("(Q)uit");
 
                 var userChoice = PromptForString("What would you like to do?. Choice:  ").ToUpper().Trim();
 
                 switch (userChoice)
                 {
-                    case "DEPOSIT":
+                    case "D":
                         Console.WriteLine("You chose to deposit.");
                         break;
-                    case "WITHDRAW":
+                    case "W":
                         Console.WriteLine("You chose to withdraw.");
                         break;
-                    case "TRANSFER":
+                    case "T":
                         Console.WriteLine("You chose to transfer.");
                         break;
-                    case "BALANCE":
+                    case "B":
                         Console.WriteLine("You chose to check your balance.");
                         break;
-                    case "HISTORY":
+                    case "H":
                         Console.WriteLine("You chose to check your history.");
                         break;
-                    case "QUIT":
+                    case "Q":
                         Console.WriteLine("You chose to quit.");
                         userWantsToQuit = true;
                         break;
