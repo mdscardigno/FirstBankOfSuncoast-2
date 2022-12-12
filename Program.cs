@@ -75,48 +75,22 @@ namespace FirstBankOfSuncoast
                         //Ask the user if they would like to choose Savings or Checking?
                         var accountHistoryChoice = PromptForString("Would you like to see your (S)avings or (C)hecking history?: ").ToUpper().Trim();
 
-                        //If(Savings)
-                        if (accountHistoryChoice == "S")
+                        //Filter out the account by Savings
+                        //-- Filter out by giving a small list of transactions that match the account
+                        var filteredTransaction = transactions.FindAll(transaction => transaction.Account == accountHistoryChoice);
+                        //Foreach (var save in savings)
+                        Console.WriteLine("------------------------------------------------------------");
+                        Console.WriteLine($"Here is your Transaction History for your Savings Account: ");
+                        Console.WriteLine();
+                        Console.WriteLine("------------------------------------------------------------");
+                        //Foreach (var save in savings)
+                        foreach (var transaction in filteredTransaction)
                         {
-                            //Filter out the account by Savings
-                            //-- Filter out by giving a small list of transactions that match the account
-                            var savingsTransactions = transactions.FindAll(transaction => transaction.Account == "Savings");
-                            //Foreach (var save in savings)
+                            //Print out the transaction history for savings
+                            Console.WriteLine($"{transaction.Type}\t{transaction.Account}\t{transaction.Amount}\t{transaction.TimeStamp}");
                             Console.WriteLine("------------------------------------------------------------");
-                            Console.WriteLine($"Here is your Transaction History for your Savings Account: ");
-                            Console.WriteLine();
-                            Console.WriteLine("------------------------------------------------------------");
-                            //Foreach (var save in savings)
-                            foreach (var transaction in savingsTransactions)
-                            {
-                                //Print out the transaction history for savings
-                                Console.WriteLine($"{transaction.Type}\t{transaction.Account}\t{transaction.Amount}\t{transaction.TimeStamp}");
-                                Console.WriteLine("------------------------------------------------------------");
-                            }
                         }
 
-                        //If(Checking)
-                        if (accountHistoryChoice == "C")
-                        {
-                            //Filter out the account by Checking
-                            //-- Filter out by giving a small list of transactions that match the account
-                            var checkingTransactions = transactions.FindAll(transaction => transaction.Account == "Checking");
-                            //Foreach (var check in checking)
-                            Console.WriteLine("------------------------------------------------------------");
-                            Console.WriteLine($"Here is your Transaction History for your Checking Account: ");
-                            Console.WriteLine();
-                            Console.WriteLine("------------------------------------------------------------");
-                            //Foreach (var check in checking)
-                            foreach (var transaction in checkingTransactions)
-                            {
-                                //Print out the transactions history for checking
-                                Console.WriteLine($"{transaction.Type}\t{transaction.Account}\t{transaction.Amount}\t{transaction.TimeStamp}");
-                                Console.WriteLine("------------------------------------------------------------");
-                            }
-                        }
-                        //Filter out the account by Checking
-                        //Foreach (var check in checking)
-                        //Print out the transactions history for checking
                         Console.WriteLine();
                         break;
                     case "Q":
