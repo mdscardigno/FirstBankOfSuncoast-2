@@ -10,7 +10,26 @@ namespace FirstBankOfSuncoast
         {
             Console.WriteLine("Welcome to First Bank Of Suncoast.");
 
-            var transaction = new List<Transaction>();
+            // var transaction = new List<Transaction>();
+            //making test transactions
+            var transaction = new List<Transaction>()
+            {
+                //data example:
+                //|Type   |  |Account |  |Amount  |
+                //---------------------------------
+                //|Deposit|  |Savings |  |2500    |
+                //|Deposit|  |Savings |  |2000    |
+                //|Deposit|  |Checking|  |3000    |
+                //|Deposit|  |Checking|  |3000    |
+                //---------------------------------
+                new Transaction{...},
+                new Transaction{...},
+                new Transaction{...},
+                new Transaction{...},
+
+            };
+
+
 
 
             var userWantsToQuit = false;
