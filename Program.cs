@@ -7,6 +7,18 @@ namespace FirstBankOfSuncoast
         static void Main(string[] args)
         {
             Console.WriteLine("Welcome to First Bank Of Suncoast.");
+
+            var userWantsToQuit = false;
+            while (userWantsToQuit == false)
+            {
+                Console.WriteLine("Menu Options:");
+                Console.WriteLine();
+                Console.WriteLine("Deposit");
+                Console.WriteLine("Withdraw");
+                Console.WriteLine("Transfer");
+                Console.WriteLine("Balance");
+                Console.WriteLine("Quit");
+            }
         }
 
         static string PromptForString(string prompt)
