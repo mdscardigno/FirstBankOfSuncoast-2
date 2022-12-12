@@ -14,6 +14,7 @@ namespace FirstBankOfSuncoast
             //making test transactions
             var transaction = new List<Transaction>()
             {
+                //scaffolding for data
                 //data example:
                 //|Type   |  |Account |  |Amount  |
                 //---------------------------------
