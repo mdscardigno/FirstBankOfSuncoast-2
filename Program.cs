@@ -68,6 +68,25 @@ namespace FirstBankOfSuncoast
                         Console.WriteLine("You chose to transfer.");
                         break;
                     case "B":
+                        //If (Balance)
+                        //Ask the user if they would like to choose Savings or Checking?
+
+                        //If (Savings)
+                        //Filter out the account by Savings
+                        //--Filter out the Deposits and Sum the Total of the Deposit
+                        //Filter out the Withdraw and Sum the Total of the Withdraw
+                        //difference between the two
+                        //difference = deposit amount - withdraw amount
+                        //--Print out the difference or the balance for Savings account
+
+                        //If (Checking)
+                        //Filter out the account by Checking
+                        //--Filter out the Deposits and Sum the Total of the Deposit
+                        //Filter out the Withdraw and Sum the Total of the Withdraw
+                        //difference between the two
+                        //difference = deposit amount - withdraw amount
+                        //--Print out the difference or the balance for Checking account
+
                         Console.WriteLine("You chose to check your balance.");
                         break;
                     case "H":
