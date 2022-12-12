@@ -12,7 +12,7 @@ namespace FirstBankOfSuncoast
 
             // var transaction = new List<Transaction>();
             //making test transactions
-            var transaction = new List<Transaction>()
+            var transactions = new List<Transaction>()
             {
                 //scaffolding for data
                 //data example:
@@ -28,6 +28,16 @@ namespace FirstBankOfSuncoast
                 new Transaction{Type = "Withdraw", Amount = 1000, Account = "Checking", TimeStamp = DateTime.Now},
                 //---------------------------------
             };
+            Console.WriteLine("Here is your transaction history:");
+            Console.WriteLine();
+            Console.WriteLine("Type\tAccount\tAmount\tTimeStamp");
+            Console.WriteLine("-------------------------------------------------");
+            foreach (var item in transactions)
+            {
+                Console.WriteLine(transactions.Count);
+                Console.WriteLine($"{item.Type}\t{item.Account}\t{item.Amount}\t{item.TimeStamp}");
+
+            }
 
 
 
