@@ -19,15 +19,14 @@ namespace FirstBankOfSuncoast
                 //|Type   |  |Account |  |Amount  |
                 //---------------------------------
                 //|Deposit|  |Savings |  |2500    |
+                new Transaction{Type = "Deposit", Amount = 2500, Account = "Savings", TimeStamp = DateTime.Now},
                 //|Deposit|  |Savings |  |2000    |
+                new Transaction{Type = "Deposit", Amount = 2000, Account = "Savings", TimeStamp = DateTime.Now},
                 //|Deposit|  |Checking|  |3000    |
-                //|Deposit|  |Checking|  |3000    |
+                new Transaction{Type = "Deposit", Amount = 3000, Account = "Checking", TimeStamp = DateTime.Now},
+                //|Deposit|  |Checking|  |5000    |
+                new Transaction{Type = "Deposit", Amount = 5000, Account = "Checking", TimeStamp = DateTime.Now},
                 //---------------------------------
-                new Transaction{...},
-                new Transaction{...},
-                new Transaction{...},
-                new Transaction{...},
-
             };
 
 
