@@ -72,6 +72,15 @@ namespace FirstBankOfSuncoast
                         break;
                     case "H":
                         Console.WriteLine("You chose to check your history.");
+                        //Ask the user if they would like to choose Savings or Checking?
+                        //If(Savings)
+                        //Filter out the account by Savings
+                        //Foreach (var save in savings)
+                        //Print out the transactions history for savings
+                        //If(Checking)
+                        //Filter out the account by Checking
+                        //Foreach (var check in checking)
+                        //Print out the transactions history for checking
                         break;
                     case "Q":
                         Console.WriteLine("You chose to quit. Have a great day!. Come back and see us soon!");
