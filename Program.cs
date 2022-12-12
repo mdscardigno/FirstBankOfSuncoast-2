@@ -1,13 +1,17 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace FirstBankOfSuncoast
 {
     class Program
     {
-        
+
         static void Main(string[] args)
         {
             Console.WriteLine("Welcome to First Bank Of Suncoast.");
+
+            var transaction = new List<Transaction>();
+
 
             var userWantsToQuit = false;
             while (userWantsToQuit == false)
