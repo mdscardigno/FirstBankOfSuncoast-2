@@ -45,7 +45,7 @@ namespace FirstBankOfSuncoast
                         Console.WriteLine("You chose to check your history.");
                         break;
                     case "Q":
-                        Console.WriteLine("You chose to quit.");
+                        Console.WriteLine("You chose to quit. Have a great day!. Come back and see us soon!");
                         userWantsToQuit = true;
                         break;
                     default:
