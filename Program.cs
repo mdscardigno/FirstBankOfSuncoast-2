@@ -14,7 +14,7 @@ namespace FirstBankOfSuncoast
             //making test transactions
             var transactions = new List<Transaction>()
             {
-                //scaffolding for data
+                //scaffolding for data / seeded data / test data/ fake data
                 //data example:
                 //|Type   |  |Account |  |Amount  |
                 //---------------------------------
@@ -31,16 +31,16 @@ namespace FirstBankOfSuncoast
             Console.WriteLine("Here is your transaction history:");
             Console.WriteLine();
             Console.WriteLine("Type\tAccount\tAmount\tTimeStamp");
-            Console.WriteLine("-------------------------------------------------");
+            Console.WriteLine("--------------------------------------------------------------------");
             foreach (var item in transactions)
             {
-                Console.WriteLine(transactions.Count);
+
                 Console.WriteLine($"{item.Type}\t{item.Account}\t{item.Amount}\t{item.TimeStamp}");
 
             }
-
-
-
+            Console.WriteLine("--------------------------------------------------------------------");
+            Console.WriteLine();
+            Console.WriteLine($"You have a total of: {transactions.Count} transactions.");
 
             var userWantsToQuit = false;
             while (userWantsToQuit == false)
