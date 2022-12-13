@@ -68,25 +68,6 @@ namespace FirstBankOfSuncoast
                         Console.WriteLine("You chose to transfer.");
                         break;
                     case "B":
-                        //If (Balance)
-                        //Ask the user if they would like to choose Savings or Checking?
-
-                        //If (Savings)
-                        //Filter out the account by Savings
-                        //--Filter out the Deposits and Sum the Total of the Deposit
-                        //Filter out the Withdraw and Sum the Total of the Withdraw
-                        //difference between the two
-                        //difference = deposit amount - withdraw amount
-                        //--Print out the difference or the balance for Savings account
-
-                        //If (Checking)
-                        //Filter out the account by Checking
-                        //--Filter out the Deposits and Sum the Total of the Deposit
-                        //Filter out the Withdraw and Sum the Total of the Withdraw
-                        //difference between the two
-                        //difference = deposit amount - withdraw amount
-                        //--Print out the difference or the balance for Checking account
-
                         Console.WriteLine("You chose to check your balance.");
                         break;
                     case "H":
@@ -94,22 +75,24 @@ namespace FirstBankOfSuncoast
                         //Ask the user if they would like to choose Savings or Checking?
                         var accountHistoryChoice = PromptForString("Would you like to see your (S)avings or (C)hecking history?: ").ToUpper().Trim();
 
-                        //Filter out the account by Savings
-                        //-- Filter out by giving a small list of transactions that match the account
-                        var filteredTransaction = transactions.FindAll(transaction => transaction.Account == accountHistoryChoice);
-                        //Foreach (var save in savings)
-                        Console.WriteLine("------------------------------------------------------------");
-                        Console.WriteLine($"Here is your Transaction History for your Savings Account: ");
-                        Console.WriteLine();
-                        Console.WriteLine("------------------------------------------------------------");
-                        //Foreach (var save in savings)
-                        foreach (var transaction in filteredTransaction)
+                        //If(Savings)
+                        if (accountHistoryChoice == "S")
                         {
-                            //Print out the transaction history for savings
-                            Console.WriteLine($"{transaction.Type}\t{transaction.Account}\t{transaction.Amount}\t{transaction.TimeStamp}");
+                            //Filter out the account by Savings
+                            //-- Filter out by giving a small list of transactions that match the account
+                            var savingsTransactions = transactions.FindAll(transaction => transaction.Account == "Savings");
+                            //Foreach (var save in savings)
                             Console.WriteLine("------------------------------------------------------------");
+                            Console.WriteLine($"Here is your Transaction History for your Savings Account: ");
+                            Console.WriteLine();
+                            Console.WriteLine("------------------------------------------------------------");
+                            foreach (var transaction in savingsTransactions)
+                            {
+                                //Print out the transaction history for savings
+                                Console.WriteLine($"{transaction.Type}\t{transaction.Account}\t{transaction.Amount}\t{transaction.TimeStamp}");
+                                Console.WriteLine("------------------------------------------------------------");
+                            }
                         }
-
                         Console.WriteLine();
                         break;
                     case "Q":
