@@ -73,12 +73,11 @@ namespace FirstBankOfSuncoast
                         var accountBalanceChoice = PromptForString("Would you like to see your Savings or Checking balance?: ");
                         //Filter out the account Type
                         var balanceFilteredTransactions = transactions.Where(transaction => transaction.Account == accountBalanceChoice);
-                        //Filter out the deposit and sum the total of the deposit
-                        var depositBalanceTransactions = balanceFilteredTransactions.Where(transaction => transaction.Type == "Deposit");
-                        //filter out the withdraw and sum the total of the withdraw
-                        var withdrawBalanceTransactions = balanceFilteredTransactions.Where(transaction => transaction.Type == "Withdraw");
                         //subtract the total of the withdraw from the total of the deposit
-                        var totalBalance = depositBalanceTransactions.Sum(transaction => transaction.Amount) - withdrawBalanceTransactions.Sum(transaction => transaction.Amount);
+                        // var totalBalance = depositBalanceTransactions.Sum(transaction => transaction.Amount) -
+                        //                    withdrawBalanceTransactions.Sum(transaction => transaction.Amount);
+                        var totalBalance = balanceFilteredTransactions.Where(transaction => transaction.Type == "Deposit").Sum(transaction => transaction.Amount) -
+                                           balanceFilteredTransactions.Where(transaction => transaction.Type == "Withdraw").Sum(transaction => transaction.Amount);
                         Console.WriteLine();
                         Console.WriteLine("------------------------------------------------------------");
                         Console.WriteLine($"Your {accountBalanceChoice} Account Balance is: {totalBalance}");
