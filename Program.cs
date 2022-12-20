@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace FirstBankOfSuncoast
 {
@@ -68,32 +69,45 @@ namespace FirstBankOfSuncoast
                         Console.WriteLine("You chose to transfer.");
                         break;
                     case "B":
-                        Console.WriteLine("You chose to check your balance.");
+                        // Console.WriteLine("You chose to check your balance.");
+                        var accountBalanceChoice = PromptForString("Would you like to see your Savings or Checking balance?: ");
+                        //Filter out the account Type
+                        var balanceFilteredTransactions = transactions.Where(transaction => transaction.Account == accountBalanceChoice);
+                        //Filter out the deposit and sum the total of the deposit
+                        var depositBalanceTransactions = balanceFilteredTransactions.Where(transaction => transaction.Type == "Deposit");
+                        //filter out the withdraw and sum the total of the withdraw
+                        var withdrawBalanceTransactions = balanceFilteredTransactions.Where(transaction => transaction.Type == "Withdraw");
+                        //sum the total of the deposit
+                        var totalDepositBalance = depositBalanceTransactions.Sum(transaction => transaction.Amount);
+                        //sum the total of the withdraw
+                        var totalWithdrawBalance = withdrawBalanceTransactions.Sum(transaction => transaction.Amount);
+                        //subtract the total of the withdraw from the total of the deposit
+                        var totalBalance = totalDepositBalance - totalWithdrawBalance;
+                        Console.WriteLine();
+                        Console.WriteLine("------------------------------------------------------------");
+                        Console.WriteLine($"Your {accountBalanceChoice} Account Balance is: {totalBalance}");
+                        Console.WriteLine("------------------------------------------------------------");
                         break;
-                    case "H":
+                    case "H":  //left off here and video 0:30:40
                         Console.WriteLine("You chose to check your history.");
                         //Ask the user if they would like to choose Savings or Checking?
-                        var accountHistoryChoice = PromptForString("Would you like to see your (S)avings or (C)hecking history?: ").ToUpper().Trim();
-
-                        //If(Savings)
-                        if (accountHistoryChoice == "S")
-                        {
-                            //Filter out the account by Savings
-                            //-- Filter out by giving a small list of transactions that match the account
-                            var savingsTransactions = transactions.FindAll(transaction => transaction.Account == "Savings");
-                            //Foreach (var save in savings)
-                            Console.WriteLine("------------------------------------------------------------");
-                            Console.WriteLine($"Here is your Transaction History for your Savings Account: ");
-                            Console.WriteLine();
-                            Console.WriteLine("------------------------------------------------------------");
-                            foreach (var transaction in savingsTransactions)
-                            {
-                                //Print out the transaction history for savings
-                                Console.WriteLine($"{transaction.Type}\t{transaction.Account}\t{transaction.Amount}\t{transaction.TimeStamp}");
-                                Console.WriteLine("------------------------------------------------------------");
-                            }
-                        }
+                        var accountHistoryChoice = PromptForString("Would you like to see your Savings or Checking history?: ");
+                        //Filter out the account
+                        //-- Filter out by giving a small list of transactions that match the account
+                        var filteredTransactions = transactions.Where(transaction => transaction.Account == accountHistoryChoice);
                         Console.WriteLine();
+                        //Foreach (var transaction in transactions)
+                        Console.WriteLine("------------------------------------------------------------");
+                        Console.WriteLine($"Here is your Transaction History for your {accountHistoryChoice} Account: ");
+                        Console.WriteLine();
+                        Console.WriteLine("------------------------------------------------------------");
+                        foreach (var transaction in filteredTransactions)
+                        {
+                            //Print out the transaction history for savings
+                            // Console.WriteLine($"{transaction.Type}\t{transaction.Account}\t{transaction.Amount}\t{transaction.TimeStamp}");
+                            Console.WriteLine($"{transaction.Amount} - {transaction.Type}");
+                            Console.WriteLine("------------------------------------------------------------");
+                        }
                         break;
                     case "Q":
                         Console.WriteLine("You chose to quit. Have a great day!. Come back and see us soon!");
