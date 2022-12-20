@@ -63,7 +63,23 @@ namespace FirstBankOfSuncoast
                         Console.WriteLine("You chose to deposit.");
                         break;
                     case "W":
-                        Console.WriteLine("You chose to withdraw.");
+                        // Console.WriteLine("You chose to withdraw.");
+                        //Filter out Savings
+                        //Filter out the deposits and sum the total deposit 
+                        //Filter out the withdraws and sum the total withdraw
+                        //difference = deposit amount - withdraw amount
+                        //ask how much they want to withdraw from savings
+                        //if(difference < asking amount)
+                        //--Say: "No enough funds"
+                        //if(difference > asking amount)
+                        //--add a new instance of Transaction:
+                        //--Account
+                        //--Amount
+                        //--Type
+                        //--TimeStamp
+                        //--add transaction
+                        //--write all the transactions to the file (the four lines of code for fileWriter)
+
                         break;
                     case "T":
                         Console.WriteLine("You chose to transfer.");
