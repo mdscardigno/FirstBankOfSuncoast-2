@@ -64,6 +64,7 @@ namespace FirstBankOfSuncoast
                         break;
                     case "W":
                         // Console.WriteLine("You chose to withdraw.");
+                        var accountWithdrawChoice = PromptForString("Would you like to withdraw from your Savings or Checking balance?: ");
                         //Filter out Savings
                         //Filter out the deposits and sum the total deposit 
                         //Filter out the withdraws and sum the total withdraw
