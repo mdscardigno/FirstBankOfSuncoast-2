@@ -73,7 +73,7 @@ namespace FirstBankOfSuncoast
 
                         //if(difference < asking amount)
                         // if (withdrawMax < withdrawAmount)
-                        if (withdrawAmount < withdrawMax)
+                        if (withdrawAmount > withdrawMax)
                         {
                             //--Say: "No enough funds"
                             Console.WriteLine("Sorry. No funds available.");
@@ -102,7 +102,43 @@ namespace FirstBankOfSuncoast
 
                         break;
                     case "T":
-                        Console.WriteLine("You chose to transfer.");
+                        // Console.WriteLine("You chose to transfer.");
+                        //Filter out Savings or Checking
+                        var accountTransferChoice = PromptForString("Would you like to transfer from your Savings or Checking balance?: ");
+                        //show the max amount they can transfer
+                        var transferMax = ComputeBalance(transactions, accountTransferChoice);
+                        //ask how much they want to transfer from savings
+                        var transferAmount = PromptForInteger($"How much would you like to transfer from your {accountTransferChoice} Account? -- up to {transferMax}: ");
+
+                        //if(difference < asking amount)
+                        // if (transferMax < transferAmount)
+                        if (transferAmount > transferMax)
+                        {
+                            //--Say: "No enough funds"
+                            Console.WriteLine("Sorry. No funds available.");
+                        }
+
+                        //if(difference > asking amount)
+                        else
+                        {
+                            //--add a new instance of Transaction:
+                            var newTransaction = new Transaction()
+                            {
+                                //--Account
+                                Account = accountTransferChoice,
+                                //--Amount
+                                Amount = transferAmount,
+                                //--Type
+                                Type = "Transfer",
+                                //--TimeStamp
+                                TimeStamp = DateTime.Now,
+                            };
+                            //--add transaction
+                            transactions.Add(newTransaction);
+                        }
+
+                        //--write all the transactions to the file (the four lines of code for fileWriter)
+
                         break;
                     case "B":
                         // Console.WriteLine("You chose to check your balance.");
