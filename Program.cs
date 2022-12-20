@@ -64,21 +64,40 @@ namespace FirstBankOfSuncoast
                         break;
                     case "W":
                         // Console.WriteLine("You chose to withdraw.");
+                        //Filter out Savings or Checking
                         var accountWithdrawChoice = PromptForString("Would you like to withdraw from your Savings or Checking balance?: ");
-                        //Filter out Savings
-                        //Filter out the deposits and sum the total deposit 
-                        //Filter out the withdraws and sum the total withdraw
-                        //difference = deposit amount - withdraw amount
+                        //show the max amount they can withdraw
+                        var withdrawMax = ComputeBalance(transactions, accountWithdrawChoice);
                         //ask how much they want to withdraw from savings
+                        var withdrawAmount = PromptForInteger($"How much would you like to withdraw from your {accountWithdrawChoice} Account? -- up to {withdrawMax}: ");
+
                         //if(difference < asking amount)
-                        //--Say: "No enough funds"
+                        // if (withdrawMax < withdrawAmount)
+                        if (withdrawAmount < withdrawMax)
+                        {
+                            //--Say: "No enough funds"
+                            Console.WriteLine("Sorry. No funds available.");
+                        }
+
                         //if(difference > asking amount)
-                        //--add a new instance of Transaction:
-                        //--Account
-                        //--Amount
-                        //--Type
-                        //--TimeStamp
-                        //--add transaction
+                        else
+                        {
+                            //--add a new instance of Transaction:
+                            var newTransaction = new Transaction()
+                            {
+                                //--Account
+                                Account = accountWithdrawChoice,
+                                //--Amount
+                                Amount = withdrawAmount,
+                                //--Type
+                                Type = "Withdraw",
+                                //--TimeStamp
+                                TimeStamp = DateTime.Now,
+                            };
+                            //--add transaction
+                            transactions.Add(newTransaction);
+                        }
+
                         //--write all the transactions to the file (the four lines of code for fileWriter)
 
                         break;
@@ -89,12 +108,15 @@ namespace FirstBankOfSuncoast
                         // Console.WriteLine("You chose to check your balance.");
                         var accountBalanceChoice = PromptForString("Would you like to see your Savings or Checking balance?: ");
                         //Filter out the account Type
-                        var balanceFilteredTransactions = transactions.Where(transaction => transaction.Account == accountBalanceChoice);
-                        //subtract the total of the withdraw from the total of the deposit
-                        // var totalBalance = depositBalanceTransactions.Sum(transaction => transaction.Amount) -
-                        //                    withdrawBalanceTransactions.Sum(transaction => transaction.Amount);
-                        var totalBalance = balanceFilteredTransactions.Where(transaction => transaction.Type == "Deposit").Sum(transaction => transaction.Amount) -
-                                           balanceFilteredTransactions.Where(transaction => transaction.Type == "Withdraw").Sum(transaction => transaction.Amount);
+                        // var balanceFilteredTransactions = transactions.Where(transaction => transaction.Account == accountBalanceChoice);
+                        // //subtract the total of the withdraw from the total of the deposit
+                        // // var totalBalance = depositBalanceTransactions.Sum(transaction => transaction.Amount) -
+                        // //                    withdrawBalanceTransactions.Sum(transaction => transaction.Amount);
+                        // var totalBalance = balanceFilteredTransactions.Where(transaction => transaction.Type == "Deposit").Sum(transaction => transaction.Amount) -
+                        //                    balanceFilteredTransactions.Where(transaction => transaction.Type == "Withdraw").Sum(transaction => transaction.Amount);
+
+                        var totalBalance = ComputeBalance(transactions, accountBalanceChoice);
+
                         Console.WriteLine();
                         Console.WriteLine("------------------------------------------------------------");
                         Console.WriteLine($"Your {accountBalanceChoice} Account Balance is: {totalBalance}");
@@ -145,6 +167,25 @@ namespace FirstBankOfSuncoast
             var userInput = PromptForString(prompt);
             var userInputAsInteger = int.Parse(userInput);
             return userInputAsInteger;
+        }
+
+        //Make a method to compute the balance
+        //
+        //
+        //name: ComputeBalance
+        //input: List of transactions -- choice of account we are interested in (Savings or Checking)
+        //work to do: (those lines of LINQ code above)
+        //output: int balance
+
+        static public int ComputeBalance(List<Transaction> transactionForBalancing, string accountTypeToBalance)
+        {
+            var balanceFilteredTransactions = transactionForBalancing.Where(transaction => transaction.Account == accountTypeToBalance);
+            //subtract the total of the withdraw from the total of the deposit
+            // var totalBalance = depositBalanceTransactions.Sum(transaction => transaction.Amount) -
+            //                    withdrawBalanceTransactions.Sum(transaction => transaction.Amount);
+            var balance = balanceFilteredTransactions.Where(transaction => transaction.Type == "Deposit").Sum(transaction => transaction.Amount) -
+                               balanceFilteredTransactions.Where(transaction => transaction.Type == "Withdraw").Sum(transaction => transaction.Amount);
+            return balance;
         }
     }
 }
