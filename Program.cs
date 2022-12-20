@@ -104,7 +104,7 @@ namespace FirstBankOfSuncoast
                     case "T":
                         // Console.WriteLine("You chose to transfer.");
                         //Filter out Savings or Checking
-                        var accountTransferChoice = PromptForString("Would you like to transfer from your Savings or Checking balance?: ");
+                        var accountTransferChoice = PromptForString("Would you like to transfer to your Savings or Checking account?: ");
                         //show the max amount they can transfer
                         var transferMax = ComputeBalance(transactions, accountTransferChoice);
                         //ask how much they want to transfer from savings
@@ -132,12 +132,24 @@ namespace FirstBankOfSuncoast
                                 Type = "Transfer",
                                 //--TimeStamp
                                 TimeStamp = DateTime.Now,
+
                             };
                             //--add transaction
                             transactions.Add(newTransaction);
+
                         }
 
                         //--write all the transactions to the file (the four lines of code for fileWriter)
+                        // var fileWriter = new StreamWriter("transactions.csv");
+                        // foreach (var transaction in transactions)
+                        // {
+                        //     fileWriter.WriteLine($"{transaction.Type},{transaction.Account},{transaction.Amount},{transaction.TimeStamp}");  
+                        // }    
+                        // fileWriter.Close();
+
+
+
+
 
                         break;
                     case "B":
