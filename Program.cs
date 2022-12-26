@@ -185,16 +185,7 @@ namespace FirstBankOfSuncoast
                         //update balance
                         var newBalance = balance + transferAmount;
                         Console.WriteLine($"Your balance in your {accountTransferChoice} account was: {balance}. Your new balance is {newBalance}.");
-
-
-
-
-
-
-
-
-
-
+                        Console.WriteLine();
 
                         break;
                     case "B":
