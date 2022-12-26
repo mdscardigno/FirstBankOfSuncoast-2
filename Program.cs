@@ -112,7 +112,7 @@ namespace FirstBankOfSuncoast
                         else
                         {
                             //--add a new instance of Transaction:
-                            var newTransaction = new Transaction()
+                            var newWithdrawalTransaction = new Transaction()
                             {
                                 //--Account
                                 Account = accountWithdrawChoice,
@@ -124,7 +124,10 @@ namespace FirstBankOfSuncoast
                                 TimeStamp = DateTime.Now,
                             };
                             //--add transaction
-                            transactions.Add(newTransaction);
+                            transactions.Add(newWithdrawalTransaction);
+                            Console.WriteLine($"You withdrew {withdrawAmount} from your {accountWithdrawChoice} Account.");
+                            Console.WriteLine($"You have a total of: {transactions.Count} transactions.");
+                            Console.WriteLine();
                         }
 
                         //--write all the transactions to the file (the four lines of code for fileWriter)
