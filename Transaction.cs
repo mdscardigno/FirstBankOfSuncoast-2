@@ -4,6 +4,15 @@ namespace FirstBankOfSuncoast
 {
     public class Transaction
     {
+        // Behavior
+        //
+        // Name:     Description
+        // Input:    nothing? (we have everything as properties)
+        // Output:   string (containing the description)
+        // Work:     Combine the properties into a description string
+        // Access:   Does the outside world need to access this? true
+        //           We want our PROGRAM to be able to call for a Transaction Description
+
         //-Properties
         //--Amount (int) The amount of the transaction
         public int Amount { get; set; }
@@ -14,5 +23,18 @@ namespace FirstBankOfSuncoast
         //--Account (string) Checking, Savings
         public string Account { get; set; }
 
+        public string Description()
+        {
+            return Bannerized($"{Type} of {Amount} on {TimeStamp} for {Account}");
+
+        }
+        private string Bannerized(string message)
+        {
+            var output = "";
+            output += "******************************\n";
+            output += message + "\n";
+            output += "******************************\n";
+            return output;
+        }
     }
 }

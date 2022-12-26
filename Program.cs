@@ -222,9 +222,34 @@ namespace FirstBankOfSuncoast
 
         static int PromptForInteger(string prompt)
         {
-            var userInput = PromptForString(prompt);
-            var userInputAsInteger = int.Parse(userInput);
-            return userInputAsInteger;
+            //OLD
+            // var userInput = PromptForString(prompt);
+            // var userInputAsInteger = int.Parse(userInput);
+            // return userInputAsInteger;
+
+            //NEW
+
+            var isThisGoodInput = false;
+            do
+            {
+                var stringInput = PromptForString(prompt);
+
+                int numberInput;
+
+                isThisGoodInput = Int32.TryParse(stringInput, out numberInput);
+
+                if (isThisGoodInput)
+                {
+                    return numberInput;
+                }
+                else
+                {
+                    Console.WriteLine("Sorry, that is not a valid input. Please try again.");
+                }
+            } while (!isThisGoodInput);
+
+            //this makes c# happy
+            return 0;
         }
 
         //Make a method to compute the balance
