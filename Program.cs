@@ -43,6 +43,11 @@ namespace FirstBankOfSuncoast
             Console.WriteLine();
             Console.WriteLine($"You have a total of: {transactions.Count} transactions.");
 
+            //Name ShowMenu
+            //Input: none (void)
+            //Output: none (void)
+            //Work: a bunch of WriteLines
+
             var userWantsToQuit = false;
             while (userWantsToQuit == false)
             {
@@ -60,7 +65,31 @@ namespace FirstBankOfSuncoast
                 switch (userChoice)
                 {
                     case "D":
-                        Console.WriteLine("You chose to deposit.");
+                        // Console.WriteLine("You chose to deposit.");
+                        //Filter out Savings or Checking
+                        var accountDepositChoice = PromptForString("Would you like to deposit to your Savings or Checking balance?: ");
+                        //ask how much they want to deposit to savings
+                        var depositAmount = PromptForInteger($"How much would you like to deposit to your {accountDepositChoice} Account?: ");
+
+                        //add a new instance of Transaction:
+                        var newDepositTransaction = new Transaction()
+                        {
+                            //Account
+                            Account = accountDepositChoice,
+                            //Amount
+                            Amount = depositAmount,
+                            //Type
+                            Type = "Deposit",
+                            //TimeStamp
+                            TimeStamp = DateTime.Now,
+                        };
+                        //add the new transaction to the list of transactions
+                        transactions.Add(newDepositTransaction);
+
+                        Console.WriteLine($"You deposited {depositAmount} to your {accountDepositChoice} Account.");
+                        Console.WriteLine($"You have a total of: {transactions.Count} transactions.");
+                        Console.WriteLine();
+
                         break;
                     case "W":
                         // Console.WriteLine("You chose to withdraw.");
