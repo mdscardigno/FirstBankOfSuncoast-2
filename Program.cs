@@ -168,6 +168,9 @@ namespace FirstBankOfSuncoast
                             };
                             //--add transaction
                             transactions.Add(newTransaction);
+                            Console.WriteLine($"You transferred {transferAmount} from your {accountTransferChoice} Account.");
+                            Console.WriteLine($"You have a total of: {transactions.Count} transactions.");
+                            Console.WriteLine();
                         }
 
                         //--write all the transactions to the file (the four lines of code for fileWriter)
