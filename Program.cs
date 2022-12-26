@@ -136,7 +136,6 @@ namespace FirstBankOfSuncoast
                             };
                             //--add transaction
                             transactions.Add(newTransaction);
-
                         }
 
                         //--write all the transactions to the file (the four lines of code for fileWriter)
@@ -146,6 +145,17 @@ namespace FirstBankOfSuncoast
                         //     fileWriter.WriteLine($"{transaction.Type},{transaction.Account},{transaction.Amount},{transaction.TimeStamp}");  
                         // }    
                         // fileWriter.Close();
+
+                        var balance = ComputeBalance(transactions, accountTransferChoice);
+                        //update balance
+                        var newBalance = balance + transferAmount;
+                        Console.WriteLine($"Your balance in your {accountTransferChoice} account was: {balance}. Your new balance is {newBalance}.");
+
+
+
+
+
+
 
 
 
